@@ -1,5 +1,6 @@
 streamlit==1.54.0
 python-dotenv==1.2.1
+numpy==1.24.3
 
 langchain-community==0.4.1
 langchain-groq==1.1.2
