@@ -18,6 +18,14 @@ load_dotenv()
 st.set_page_config(page_title="PDF RAG Chat", layout="wide")
 st.title("📄 Chat with your PDF")
 
+# Helper function to get secrets from either .env or Streamlit secrets
+def get_secret(key):
+    """Get secret from Streamlit secrets or environment variables"""
+    try:
+        return st.secrets.get(key, os.getenv(key))
+    except:
+        return os.getenv(key)
+
 # ---------------------------
 # SESSION MEMORY
 # ---------------------------
@@ -43,13 +51,18 @@ def get_embeddings():
 @st.cache_resource
 def get_client():
     return QdrantClient(
-        url=os.getenv("QDRANT_URL"),
-        api_key=os.getenv("QDRANT_API_KEY"),
+        url=get_secret("QDRANT_URL"),
+        api_key=get_secret("QDRANT_API_KEY"),
         prefer_grpc=True,
     )
 
 @st.cache_resource
 def get_llm():
+    # Set GROQ_API_KEY for ChatGroq if using Streamlit secrets
+    groq_key = get_secret("GROQ_API_KEY")
+    if groq_key:
+        os.environ["GROQ_API_KEY"] = groq_key
+    
     return ChatGroq(
         # model="openai/gpt-oss-20b",
         model = "llama-3.3-70b-versatile",
