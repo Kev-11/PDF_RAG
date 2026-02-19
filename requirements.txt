@@ -1,17 +1,17 @@
-streamlit==1.54.0
-python-dotenv==1.2.1
-numpy==1.24.3
+streamlit
+python-dotenv
 
-langchain-community==0.4.1
-langchain-groq==1.1.2
-langchain-huggingface==1.2.0
-langchain-qdrant==1.1.0
-langchain-text-splitters==1.1.1
+langchain-community
+langchain-groq
+langchain-huggingface
+langchain-qdrant
+langchain-text-splitters
 
-qdrant-client==1.16.2
+qdrant-client
 
-pymupdf==1.24.9
+pymupdf
 
-sentence-transformers==2.7.0
-transformers==4.41.2
-torch==2.2.2
+sentence-transformers
+transformers
+torch
+numpy
