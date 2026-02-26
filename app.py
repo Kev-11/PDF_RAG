@@ -188,7 +188,7 @@ if uploaded_file:
 
         retriever = qdrant.as_retriever(
             search_type="similarity_score_threshold",
-            search_kwargs={"score_threshold": 0.3, "k": 5},
+            search_kwargs={"score_threshold": 0.4, "k": 3},
         )
 
         # ---------------------------
@@ -235,7 +235,6 @@ CONTEXT:
 QUESTION:
 {prompt}
 """
-
             with st.chat_message("assistant"):
                 box = st.empty()
                 output = ""
